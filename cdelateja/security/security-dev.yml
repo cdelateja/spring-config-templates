@@ -1,0 +1,54 @@
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eurekaserver:8761/eureka/
+      #defaultZone: http://localhost:8761/eureka/
+
+spring:
+  data:
+    neo4j:
+      uri: bolt://host.docker.internal:7687  # if run outside docker use bolt://localhost:7687
+      username: "{cipher}AQA0Pto66FQwqkdsJYZguF/F+plv/juWIvl+uCwHTU/xiYhr8yjn3j0XuRo9zlaidiXBnZ4JU2bXk+FhSi4Lh6Hg90w41/f3kaofADOWJDv9A2+0uF3C3czgxV147E6YclQe7CS62r4G96nEbGpJWTSI7GF5b5zQVQijzyOjfJOUuiU8YRdjlszgXMpyqwQL7VULGiTyJByNorxf7HMOUhqSZJYIxPR+VEkcfCbswOLxvhI/jPkfoq65tc5g/1By/dUwsZgm9TrUcRltgBFyTziQ+zfSx0IBziTVnzzxwH1lS1nWIiF2kbZjAJVlT6a8tIYTjT6cBqQyr3FG5//W7F240y1dnf1YSCOyFzX3Pty5dpGAOmzXRw44RVFCiuxvqss="
+      password: "{cipher}AQB14RBay2a2NXYZe42Gx1uNhj4ch4jJP86ZIr23ilo+RmKJccSC+BuCuJLl3iY0addkZ89He2hFb5AfmaOcHFvCjTnNxT8D+iG2JwiFmA5fcg+Vgk7KYjFOSoHd+SkYOxeAeE7ZDIJUJhfltj6gJPbVtibHezOHkxW4lvi4+9Nl1J4Vccislkp/ll/+VRAn37plI8Ix04iewxDf0YFlDpm9+kqwum8AJa5N9vo9iu1zehi97xIwEyN6MyWpDt0C1oMGmrEFlc/r+EyY23gqr5WwKy1mxXo8Xelh43Ag3jJwwCAI+ViZ2gY9vYd094OUPru858eNhDq1f2Ehc2Sky/sRez2sG1wLlk093mCO61eE6T4HupNZgC1c9h0Bhtc/4Q8="
+
+  # Zipkin variables
+  sleuth:
+    sampler:
+      percentage:  1    # The sampler for Zipkin is all REST service for demo purpose
+      #percentage: 0.3  # More realistic approach
+  zipkin:
+    # baseUrl:  http://localhost:9411/
+    # baseUrl:  http://host.docker.internal:9411/
+    baseUrl:  http://zipkin:9411/
+
+# Oauth tokens. For the moment it is not used for Authentication the user call back
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://oauth2srv:8901/auth/usuario
+
+# This is the key used to generate a JWT token
+signing:
+  key: 345345fsdfsf5345
+# This is to enable swagger. Disabled for QA and Production environment
+swagger:
+  enabled: true
+# This is to enable JWT or disabled. Disable JWT token just for develop purpose only
+jwttoken:
+  enabled: true
+
+  # Propiedades de Alfresco
+alfresco:
+  rootFolderID: 90f39c20-8ea2-437c-b74e-83ef6bd18c16
+  url: http://5.189.172.240:8080/alfresco/api/-default-/public/cmis/versions/1.0/atom
+  user: admin
+  password: admin
+
+logger:
+  url: http://eventlogger/events    # This is when run this micro service inside a docker
+  bodyEvent:
+    idUser: 60

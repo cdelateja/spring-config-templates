@@ -1,3 +1,6 @@
 #This YML is for paths between applications.
 ctServers:
-  challenge: 'http://localhost:9000/api/v1/api/'
+  challenge: 'http://localhost:9000/api/v1'
+  getPages: '/landing-pages'
+  savePages: '/landing-pages'
+  getTemplates: '/templates'

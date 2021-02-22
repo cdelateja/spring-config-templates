@@ -2,5 +2,6 @@
 ctServers:
   challenge: 'http://localhost:9000/api/v1'
   getPages: '/landing-pages'
+  getPage: '/landing-page?id='
   savePages: '/landing-pages'
   getTemplates: '/templates'
